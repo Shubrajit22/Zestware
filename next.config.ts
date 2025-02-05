@@ -2,13 +2,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true, // Enable React Strict Mode
-  swcMinify: true, // Enable SWC minifier
-  // Additional configurations can be added here
+  reactStrictMode: true, // Enable React Strict Mode for development
   images: {
-    domains: ['your-image-domain.com'], // If you need to allow images from external sources
+    domains: ['i.ibb.co'], // Allow images from ImgBB's domain
   },
-  // Add other Next.js specific configurations here if necessary
+  // Add other Next.js specific configurations if necessary
 };
 
 export default nextConfig;
