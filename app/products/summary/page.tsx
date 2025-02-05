@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Shirt as Tshirt } from 'lucide-react';
-import { Label } from '@/components/ui/label';
+//import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation'; 
 export default function SummaryPage() {
@@ -47,13 +47,13 @@ export default function SummaryPage() {
                   <div className="mt-2" style={{ backgroundColor: customization.color, width: '20px', height: '20px', borderRadius: '50%' }}></div>
                 </div>
                 <div>
-                  <Label>Size:</Label>
+                  <label>Size:</label>
                   <div className="mt-2">{customization.size}</div>
                 </div>
              
                 {customization.customImage && (
                   <div>
-                    <Label>Custom Image:</Label>
+                    <label>Custom Image:</label>
                     <img src={customization.customImage} alt="Custom Image" className="mt-2 w-24 h-24 object-contain" />
                   </div>
                 )}
@@ -82,7 +82,7 @@ export default function SummaryPage() {
         </div>
       </div>
       <div className="mt-8 flex justify-center">
-        <Button onClick={handleBuyNow}>Buy Now</Button>
+        <button onClick={handleBuyNow}>Buy Now</button>
       </div>
     </div>
   );

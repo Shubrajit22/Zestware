@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 interface Jersey {
   image: string;
@@ -56,6 +57,19 @@ const JerseysPage: React.FC = () => {
     setSelectedDepartment("");
     setSelectedJersey(null);
     setIsUploadVisible(true);
+  };
+  const router = useRouter()
+  const handleProceed = () => {
+    const customization = {
+      
+      
+      selectedSize,
+     
+      customImage: selectedJersey,
+      
+    };
+    localStorage.setItem('customization', JSON.stringify(customization));
+    router.push('/summary');
   };
 
   const handleDepartmentChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -122,7 +136,8 @@ const JerseysPage: React.FC = () => {
             className="w-64 h-96 border border-gray-500 flex flex-col justify-center items-center rounded-lg cursor-pointer hover:border-gray-300"
           >
             <span className="text-5xl font-light">+</span>
-            <p className="mt-4 text-gray-400">Upload your own design</p>
+            <button className="mt-4 text-gray-400 "onClick={handleProceed}>Upload your own design</button>
+            
           </label>
           <input type="file" id="uploadDesign" className="hidden" />
         </div>

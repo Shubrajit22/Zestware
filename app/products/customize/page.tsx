@@ -4,9 +4,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Shirt as Tshirt, Upload, Image as ImageIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+//import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+//import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const COLORS = [
@@ -52,7 +52,7 @@ export default function CustomizePage() {
       
     };
     localStorage.setItem('customization', JSON.stringify(customization));
-    router.push('/summary');
+    router.push('/products/summary');
   };
 
   const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -107,7 +107,7 @@ export default function CustomizePage() {
         </div>
       </div>
       <div>
-        <Label>Select Size</Label>
+        <label>Select Size</label>
         <Select value={size} onValueChange={setSize}> {/* Controlled Select */}
           <SelectTrigger className="w-full mt-2">
             <SelectValue placeholder="Select size" />
@@ -122,12 +122,12 @@ export default function CustomizePage() {
         </Select>
       </div>
       <div>
-        <Label>Upload Custom Image</Label>
+        <label>Upload Custom Image</label>
         <Input type="file" accept="image/*" onChange={handleCustomImageChange} />
       </div>
 
       <div className="mt-8 flex justify-center">
-        <Button onClick={handleProceed}>Proceed to Summary</Button>
+        <button onClick={handleProceed}>Proceed to Summary</button>
       </div>
     </div>
   );
