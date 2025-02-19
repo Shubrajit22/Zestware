@@ -10,7 +10,7 @@ type TeamMember = {
 const teamMembers: TeamMember[] = [
   {
     name: "Anurag Sarmah",
-    role: "Chief Executive Officer (CEO)",
+    role: " Founder & Chief Executive Officer (CEO)",
     image: "/aboute/ceo.png", 
     buttonText: "Know More",
   },
