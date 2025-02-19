@@ -58,11 +58,8 @@ export async function POST(req: NextRequest) {
             },
             { status: 201 }
         );
-    } catch (error: any) {
-        console.error("Error occurred:", error.message || error.toString());
-        return NextResponse.json(
-            { error: "Internal Server Error", details: error.message },
-            { status: 500 }
-        );
+        
+    } catch{
+        console.log("Error")
     }
 }

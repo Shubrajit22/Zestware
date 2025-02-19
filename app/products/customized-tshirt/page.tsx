@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import tshirtData from "@/public/custom/tshirts.json";
 import Image from "next/image";
-import {  useRef, useEffect } from 'react';
+import {  useRef } from 'react';
 
 
 const CustomTShirt: React.FC = () => {
@@ -25,13 +25,13 @@ const CustomTShirt: React.FC = () => {
   const [logoPositionsBack, setLogoPositionsBack] = useState<{ x: number; y: number }[]>([{ x: 100, y: 100 }]);
   const [logoSizesFront, setLogoSizesFront] = useState<number[]>([64]);
   const [logoSizesBack, setLogoSizesBack] = useState<number[]>([64]);
-  const [uploadedTShirtImage, setUploadedTShirtImage] = useState<string | null>(null);
+ // const [uploadedTShirtImage, setUploadedTShirtImage] = useState<string | null>(null);
   const [uploadedTShirtFront, setUploadedTShirtFront] = useState<string | null>(null);
   const [uploadedTShirtBack, setUploadedTShirtBack] = useState<string | null>(null);
   
-  const [orderFormVisible, setOrderFormVisible] = useState<boolean>(false);
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
+ // const [orderFormVisible, setOrderFormVisible] = useState<boolean>(false);
+  //const [name, setName] = useState<string>("");
+  //const [email, setEmail] = useState<string>("");
   
   const getImageForView = () => {
     if (view === "front" && uploadedTShirtFront) {
@@ -111,23 +111,23 @@ const CustomTShirt: React.FC = () => {
   };
 
   // Handle order form submission
-  const handleOrderSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const { frontCanvasImage, backCanvasImage } = captureCanvasImages();
+  // const handleOrderSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   const { frontCanvasImage, backCanvasImage } = captureCanvasImages();
     
-    const orderData = {
-      name,
-      email,
-      selectedType,
-      selectedColor,
-      selectedTexture,
-      selectedSize,
-      frontCanvasImage, // Send front canvas image
-      backCanvasImage, // Send back canvas image
-    };
-    console.log("Order submitted: ", orderData);
-    setOrderFormVisible(false); // Close the form after submission
-  };
+  //   const orderData = {
+  //     //name,
+  //    // email,
+  //     selectedType,
+  //     selectedColor,
+  //     selectedTexture,
+  //     selectedSize,
+  //     frontCanvasImage, // Send front canvas image
+  //     backCanvasImage, // Send back canvas image
+  //   };
+  //   console.log("Order submitted: ", orderData);
+  //   //setOrderFormVisible(false); // Close the form after submission
+  // };
 
 
   const moveLogo = (direction: "up" | "down" | "left" | "right", index: number, view: "front" | "back") => {

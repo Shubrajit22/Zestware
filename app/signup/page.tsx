@@ -24,13 +24,10 @@ export default function Signup() {
             console.log(response.data);
             alert("Signup successful!");  // Show success message
 
-        } catch (err: any) {
-            if (err.response && err.response.data.error) {
-                setError(err.response.data.error);  // ✅ Display backend error
-            } else {
-                setError("Something went wrong. Please try again.");
-            }
+        } catch {
+            console.log("Error from Signup")
         }
+        
     };
 
     return (

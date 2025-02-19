@@ -29,11 +29,11 @@ const SIZES = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"];
 
 export default function CustomizePage() {
     const router = useRouter();
-    const [color, setColor] = useState(COLORS[0].value);
+  //  const [color,setColor] = useState(COLORS[0].value);
     const [size, setSize] = useState("M");
-    const [customImage, setCustomImage] = useState<File | null>(null);
+   // const [customImage, setCustomImage] = useState<File | null>(null);
     const [customImagePreview, setCustomImagePreview] = useState<string | null>(null);
-    const [price, setPrice] = useState(29.99);
+    //const [price, setPrice] = useState(29.99);
 
     const handleProceed = () => { const customization = {
       size,
@@ -50,7 +50,7 @@ export default function CustomizePage() {
                 <div className="flex flex-col items-center mb-8">
                     <div
                         className="w-64 h-64 flex items-center justify-center rounded-lg border-2 border-gray-300"
-                        style={{ backgroundColor: color }}
+                        
                     >
                         <Tshirt className="w-32 h-32 text-gray-400" />
                         {customImagePreview && (

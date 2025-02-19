@@ -14,12 +14,12 @@ const handler = NextAuth({
             email:{label:"email",type:"email",placeholder:"zestwear@gmail.com"},
             password: { label: "Password", type: "password" }
           },
-          async authorize(credentials, req) {
+          async authorize(credentials) {
            
             const username = credentials?.username;
             const email = credentials?.email;
-            const password = credentials?.password;
-            const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
+           // const password = credentials?.password;
+            const user = { id: "1", username, email }
       
             if (user) {
               // Any object returned will be saved in `user` property of the JWT
