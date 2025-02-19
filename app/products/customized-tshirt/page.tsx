@@ -98,17 +98,17 @@ const CustomTShirt: React.FC = () => {
     }
   };
   //
-  const captureCanvasImages = () => {
-    if (canvasRef.current) {
-      const frontCanvasImage = canvasRef.current.toDataURL("image/png");
+  // const captureCanvasImages = () => {
+  //   if (canvasRef.current) {
+  //     const frontCanvasImage = canvasRef.current.toDataURL("image/png");
 
-      // Assuming the back view is rendered on another canvas or part of the same canvas
-      const backCanvasImage = canvasRef.current.toDataURL("image/png");
+  //     // Assuming the back view is rendered on another canvas or part of the same canvas
+  //     const backCanvasImage = canvasRef.current.toDataURL("image/png");
 
-      return { frontCanvasImage, backCanvasImage };
-    }
-    return { frontCanvasImage: "", backCanvasImage: "" };
-  };
+  //     return { frontCanvasImage, backCanvasImage };
+  //   }
+  //   return { frontCanvasImage: "", backCanvasImage: "" };
+  // };
 
   // Handle order form submission
   // const handleOrderSubmit = (e: React.FormEvent) => {
