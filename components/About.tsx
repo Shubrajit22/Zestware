@@ -14,18 +14,7 @@ const teamMembers: TeamMember[] = [
     image: "/aboute/ceo.png", 
     buttonText: "Know More",
   },
-  {
-    name: "Kalyan Dutta",
-    role: "Chief Operational Officer (COO)",
-    image: "/aboute/coo.png", 
-    buttonText: "Know More",
-  },
-  {
-    name: "Anuraag Thakur",
-    role: "Chief Marketing Officer (CMO)",
-    image: "/aboute/cmo.png", 
-    buttonText: "Know More",
-  },
+ 
 ];
 
 const AboutPage: React.FC = () => {

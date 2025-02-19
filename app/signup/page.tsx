@@ -1,47 +1,56 @@
 "use client";
 import axios from "axios";
-import { ChangeEventHandler, useState } from "react";
+import { useState } from "react";
 
 export default function Signup() {
-    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [firstName, setfirstName] = useState("");
-    const [lastName, setlastName] = useState("");
-    
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [error, setError] = useState("");  // ✅ State for error message
 
-    return <div className="h-screen flex justify-center flex-col">
-        <div className="flex justify-center">
-        <a href="#" className="block max-w-xl p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-                <div>
-                    <div className="px-4 mb-6">
-                        <div className="text-3xl text-white font-extrabold text-center">
-                            Sign up
-                        </div>
-                    </div>
-                    <div className="pt-2">
-                        <LabelledInput onChange={(e) => {
-                            setName(e.target.value);
-                        }} label="First name" placeholder="zest" />
-                         <LabelledInput onChange={(e) => {
-                            setfirstName(e.target.value);
-                        }} label="Last name" placeholder="ware" />
-                         <LabelledInput onChange={(e) => {
-                            setlastName(e.target.value);
-                        }} label="Username" placeholder="zestware@gmail.com" />
-                        <LabelledInput onChange={(e) => {
-                            setPassword(e.target.value)
-                        }} label="Password" type={"password"} placeholder="password" />
-                        <button onClick={async () => {
-                            const response = await axios.post("http://localhost:3000/api/user", {
-                                name,
-                                password,
-                                firstName,
-                                lastName
-                            });
-                           
-                        }} type="button" className="mt-8 w-full text-white bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Sign up</button>
-                    </div>
+    const handleSignup = async () => {
+        try {
+            setError("");  // Clear previous errors
+            const response = await axios.post("http://localhost:3000/api/user", {
+                username,
+                email,
+                password,
+                firstname: firstName,
+                lastname: lastName
+            });
+
+            console.log(response.data);
+            alert("Signup successful!");  // Show success message
+
+        } catch (err: any) {
+            if (err.response && err.response.data.error) {
+                setError(err.response.data.error);  // ✅ Display backend error
+            } else {
+                setError("Something went wrong. Please try again.");
+            }
+        }
+    };
+
+    return (
+        <div className="h-screen flex items-center justify-center bg-gray-900">
+            <div className="max-w-lg w-full p-6 bg-gray-800 border border-gray-700 rounded-lg shadow-lg">
+                <h2 className="text-3xl font-bold text-center text-white mb-6">Sign Up</h2>
+                {error && <p className="text-red-500 text-sm text-center">{error}</p>}  {/* ✅ Show error message */}
+                <div className="space-y-4">
+                    <LabelledInput onChange={(e) => setFirstName(e.target.value)} label="First name" placeholder="Zestwear" />
+                    <LabelledInput onChange={(e) => setLastName(e.target.value)} label="Last name" placeholder="Zestwear" />
+                    <LabelledInput onChange={(e) => setUsername(e.target.value)} label="Username" placeholder="Zestwear" />
+                    <LabelledInput onChange={(e) => setEmail(e.target.value)} label="Email" placeholder="Zestwear@gmail.com" type="email" />
+                    <LabelledInput onChange={(e) => setPassword(e.target.value)} label="Password" type="password" placeholder="••••••••" />
+                    <button 
+                        onClick={handleSignup} 
+                        type="button" 
+                        className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 transition"
+                    >
+                        Sign up
+                    </button>
                 </div>
             </div>
         </div>
@@ -51,13 +60,13 @@ export default function Signup() {
 function LabelledInput({ label, placeholder, type, onChange }: LabelledInputType) {
     return (
         <div>
-            <label className="block mb-2 text-sm text-white font-semibold">
+            <label className="block text-sm font-semibold text-white mb-1">
                 {label}
             </label>
             <input
                 onChange={onChange}
                 type={type || "text"}
-                className="bg-black border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none"
                 placeholder={placeholder}
                 required
             />
@@ -69,5 +78,5 @@ interface LabelledInputType {
     label: string;
     placeholder: string;
     type?: string;
-    onChange: ChangeEventHandler<HTMLInputElement>;
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
